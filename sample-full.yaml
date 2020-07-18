@@ -1,0 +1,85 @@
+metadata:
+  family: Canary
+  description: A font made exclusively for testing purposes.
+  version: 1.0.1
+
+  manufacturer: Example Fonts
+  designer: Example Fonts
+
+  vendor_url: https://example.com
+  designer_url: https://exmple.com
+
+  copyright: Copyright 2020 Example Fonts
+  trademark: Canary is a trademark of Example Fonts.
+
+  license: For internal use only. Do not redistribute.
+  license_url: https://example.com
+
+styles:
+  - name: Regular
+    axes:
+      wght: 350.0
+      wdth: 100.0
+
+  - name: Medium
+    axes:
+      wght: 450.0
+      wdth: 100.0
+
+  - name: Semi Bold
+    axes:
+      wght: 550.0
+      wdth: 100.0
+
+  - name: Bold
+    axes:
+      wght: 650.0
+      wdth: 100.0
+
+  - name: Regular
+    subfamily: Wide
+    axes:
+      wght: 350.0
+      wdth: 125.0
+
+  - name: Medium
+    subfamily: Wide
+    axes:
+      wght: 450.0
+      wdth: 125.0
+
+  - name: Semi Bold
+    subfamily: Wide
+    axes:
+      wght: 550.0
+      wdth: 125.0
+
+  - name: Bold
+    subfamily: Wide
+    axes:
+      wght: 650.0
+      wdth: 125.0
+
+  - name: Regular
+    subfamily: Ultra Wide
+    axes:
+      wght: 350.0
+      wdth: 150.0
+
+  - name: Medium
+    subfamily: Ultra Wide
+    axes:
+      wght: 450.0
+      wdth: 150.0
+
+  - name: Semi Bold
+    subfamily: Ultra Wide
+    axes:
+      wght: 550.0
+      wdth: 150.0
+
+  - name: Bold
+    subfamily: Ultra Wide
+    axes:
+      wght: 650.0
+      wdth: 150.0
