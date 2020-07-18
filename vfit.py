@@ -4,6 +4,7 @@
 # Copyright (c) 2020 Jon Palmisciano
 
 import argparse
+import os
 import sys
 
 from fontTools import varLib
@@ -125,12 +126,16 @@ def updateMetadata(font, metadata, style):
 
 
 # Generates and writes each defined instance.
-def generateFonts(config, source):
+def generateFonts(config, args):
     metadata = config["metadata"]
     familyName = sanitize(metadata["family"])
 
+    # Create the output path if it doesn't exist.
+    if not os.path.exists(args.outputPath):
+        os.makedirs(args.outputPath)
+
     for style in tqdm(config["styles"], ascii=True, leave=False):
-        font = TTFont(source)
+        font = TTFont(args.source)
 
         instantiateFont(font, style["axes"], inplace=True, overlap=False)
         updateMetadata(font, metadata, style)
@@ -138,7 +143,10 @@ def generateFonts(config, source):
         styleName = sanitize(style["name"])
         subfamilyName = style.get("subfamily") if "subfamily" in style else ""
 
-        font.save(f"{familyName}{sanitize(subfamilyName)}-{styleName}.ttf")
+        filename = f"{familyName}{sanitize(subfamilyName)}-{styleName}.ttf"
+        outputPath = os.path.join(args.outputPath, filename)
+
+        font.save(outputPath)
 
 
 def main():
@@ -147,6 +155,8 @@ def main():
     parser = ArgumentParser(prog="vfit")
     parser.add_argument("config", help="the metadata/style definition file")
     parser.add_argument("source", help="the font to generate instances of")
+    parser.add_argument("-o", dest="outputPath", metavar="path", default=".",
+                        help="where to place output files")
 
     args = parser.parse_args()
 
@@ -156,7 +166,7 @@ def main():
         print(f"error: failed to load configuration ({error})")
         sys.exit(1)
 
-    generateFonts(config, args.source)
+    generateFonts(config, args)
 
 
 if __name__ == '__main__':
