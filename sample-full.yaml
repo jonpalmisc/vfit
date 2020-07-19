@@ -1,3 +1,10 @@
+# Sample Config
+# -------------
+# This configuraiton file shows all of the available config options and is meant
+# to be used as a reference. You likely won't need to adjust all of these
+# options for your use case.
+
+# Here you can customize a font's metadata. All available options are below.
 metadata:
   family: Canary
   description: A font made exclusively for testing purposes.
@@ -15,71 +22,50 @@ metadata:
   license: For internal use only. Do not redistribute.
   license_url: https://example.com
 
+# Here you define all of the styles to generate.
 styles:
   - name: Regular
     axes:
-      wght: 350.0
+      wght: 400.0
       wdth: 100.0
 
   - name: Medium
     axes:
-      wght: 450.0
+      wght: 500.0
       wdth: 100.0
 
   - name: Semi Bold
     axes:
-      wght: 550.0
+      wght: 600.0
       wdth: 100.0
 
   - name: Bold
     axes:
-      wght: 650.0
+      wght: 700.0
       wdth: 100.0
 
+  # You can also define subfamilies. Here we have defined the "Wide" subfamily,
+  # which has all the same weights as the normal family but with increased width.
   - name: Regular
     subfamily: Wide
     axes:
-      wght: 350.0
+      wght: 400.0
       wdth: 125.0
 
   - name: Medium
     subfamily: Wide
     axes:
-      wght: 450.0
+      wght: 500.0
       wdth: 125.0
 
   - name: Semi Bold
     subfamily: Wide
     axes:
-      wght: 550.0
+      wght: 600.0
       wdth: 125.0
 
   - name: Bold
     subfamily: Wide
     axes:
-      wght: 650.0
+      wght: 700.0
       wdth: 125.0
-
-  - name: Regular
-    subfamily: Ultra Wide
-    axes:
-      wght: 350.0
-      wdth: 150.0
-
-  - name: Medium
-    subfamily: Ultra Wide
-    axes:
-      wght: 450.0
-      wdth: 150.0
-
-  - name: Semi Bold
-    subfamily: Ultra Wide
-    axes:
-      wght: 550.0
-      wdth: 150.0
-
-  - name: Bold
-    subfamily: Ultra Wide
-    axes:
-      wght: 650.0
-      wdth: 150.0
