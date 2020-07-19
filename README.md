@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="vfit-logo.png" width="400">
+  <img src="vfit-logo.png" width="300">
   <br/>
-</div>
 
-VFIT allows you to generate backwards-compatible, static instances of a variable
-font.
+  VFIT allows you to generate backwards-compatible, static instances of a
+  variable font.
+</div>
 
 ## Usage
 
