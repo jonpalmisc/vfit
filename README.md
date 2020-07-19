@@ -1,10 +1,13 @@
 <div align="center">
   <img src="vfit-logo.png" width="300">
   <br/>
-
-  VFIT allows you to generate backwards-compatible, static instances of a
-  variable font.
 </div>
+
+## About
+
+VFIT (Variable Font Instancing Tool) allows you to generate customized,
+backwards-compatible, static instances of a variable font from a configuration
+file.
 
 ## Usage
 
@@ -43,4 +46,5 @@ the `-o` option. For more information, see `./vift.py --help`.
 
 Copyright &copy; 2020 Jon Palmisciano
 
-VFIT is available under the MIT License. See LICENSE.txt for more information.
+VFIT is available under the MIT License. See [LICENSE.txt](LICENSE.txt) for more
+information.
