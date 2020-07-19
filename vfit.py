@@ -137,7 +137,7 @@ def generateFonts(config, args):
     for style in tqdm(config["styles"], ascii=True, leave=False):
         font = TTFont(args.source)
 
-        instantiateFont(font, style["axes"], inplace=True, overlap=False)
+        instantiateFont(font, style["axes"], inplace=True, overlap=True)
         updateMetadata(font, metadata, style)
 
         styleName = sanitize(style["name"])
