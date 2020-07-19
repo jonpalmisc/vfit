@@ -42,6 +42,11 @@ $ ./vfit.py config.yaml Input-VF.ttf
 If you would like to generate instances into a specific directory, you can use
 the `-o` option. For more information, see `./vift.py --help`.
 
+## Contributing
+
+All contributions are welcome. If you find a bug or have a request for a
+feature, feel free to create a new issue (or even better, a pull request).
+
 ## License
 
 Copyright &copy; 2020 Jon Palmisciano
