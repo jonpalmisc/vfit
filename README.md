@@ -1,13 +1,13 @@
 <div align="center">
   <img src="vfit-logo.png" width="300">
-  <br/>
 </div>
 
 ## About
 
 VFIT (Variable Font Instancing Tool) allows you to generate customized,
 backwards-compatible, static instances of a variable font from a configuration
-file.
+file. Additionally, VFIT can manipulate font metadata such as the family name,
+version, or copyright information.
 
 ## Usage
 
