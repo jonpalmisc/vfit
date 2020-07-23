@@ -9,6 +9,21 @@ backwards-compatible, static instances of a variable font from a configuration
 file. Additionally, VFIT can manipulate font metadata such as the family name,
 version, or copyright information.
 
+## Installation
+
+VFIT is not currently available on the Python Package Index. You can install
+VFIT by downloading a pre-built wheel from the Releases section or by building
+one yourself.
+
+``` sh
+# Skip this step if you're downloading a prebuilt wheel.
+$ git clone https://github.com/jonpalmisc/vfit.git && cd vfit
+$ poetry build && cd dist
+
+# Install VFIT from the wheel.
+$ pip install vfit-version-py3-none-any.whl
+```
+
 ## Usage
 
 To begin, you will need a variable font file to work with. Your first step will
@@ -36,7 +51,7 @@ styles:
 Next, run VFIT and pass your configuration and variable font file as arguments:
 
 ``` sh
-$ ./vfit.py config.yaml Input-VF.ttf
+$ vfit config.yaml Input-VF.ttf
 ```
 
 If you would like to generate instances into a specific directory, you can use
