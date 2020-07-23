@@ -12,9 +12,11 @@ def generateInstances(config, args):
     metadata = config["metadata"]
     familyName = sanitize(metadata["family"])
 
+    outputDir = os.path.join(args.outputPath, familyName)
+
     # Create the output path if it doesn't exist.
-    if not os.path.exists(args.outputPath):
-        os.makedirs(args.outputPath)
+    if not os.path.exists(outputDir):
+        os.makedirs(outputDir)
 
     for style in tqdm(config["styles"], ascii=True, leave=False):
         font = TTFont(args.source)
@@ -26,6 +28,6 @@ def generateInstances(config, args):
         subfamilyName = style.get("subfamily") if "subfamily" in style else ""
 
         filename = f"{familyName}{sanitize(subfamilyName)}-{styleName}.ttf"
-        outputPath = os.path.join(args.outputPath, filename)
+        outputPath = os.path.join(outputDir, filename)
 
         font.save(outputPath)
