@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "vfit"
+version = "0.1.1"
+description = "Generate backwards-compatible, static instances of variable fonts"
+authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
+maintainers = ["Jon Palmisciano <jp@jonpalmisc.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/jonpalmisc/vfit"
+
+keywords = ["fonts", "fonttools"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+tqdm = "^4.48.0"
+pyyaml = "^5.3.1"
+fonttools = "^4.13.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
