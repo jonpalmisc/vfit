@@ -27,7 +27,8 @@ def generateInstances(config, args):
         styleName = sanitize(style["name"])
         subfamilyName = style.get("subfamily") if "subfamily" in style else ""
 
-        filename = f"{familyName}{sanitize(subfamilyName)}-{styleName}.ttf"
+        filename = f"{familyName}{sanitize(subfamilyName)}-{styleName}.{args.format}"
         outputPath = os.path.join(outputDir, filename)
 
+        font.flavor = args.format
         font.save(outputPath)
