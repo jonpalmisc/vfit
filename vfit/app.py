@@ -13,17 +13,22 @@ from . import core
 def main():
     from argparse import ArgumentParser
 
-    parser = ArgumentParser(prog="vfit")
+    parser = ArgumentParser(
+        prog="vfit",
+        description=
+        "Generate backwards-compatible, static instances of variable fonts.")
+
     parser.add_argument("config", help="the metadata/style definition file")
     parser.add_argument("source", help="the font to generate instances of")
+
     parser.add_argument("-o",
                         dest="outputPath",
-                        metavar="path",
+                        metavar="PATH",
                         default=".",
                         help="where to place output files")
+
     parser.add_argument("-f",
                         dest="format",
-                        metavar="format",
                         default="ttf",
                         choices=["ttf", "woff", "woff2"],
                         help="which format to output as")
