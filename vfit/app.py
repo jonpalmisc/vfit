@@ -16,10 +16,17 @@ def main():
     parser = ArgumentParser(prog="vfit")
     parser.add_argument("config", help="the metadata/style definition file")
     parser.add_argument("source", help="the font to generate instances of")
-    parser.add_argument("-o", dest="outputPath", metavar="path", default=".",
+    parser.add_argument("-o",
+                        dest="outputPath",
+                        metavar="path",
+                        default=".",
                         help="where to place output files")
-    parser.add_argument("-f", dest="format", metavar="format", default="ttf",
-                        choices=["ttf", "woff", "woff2"], help="which format to output as")
+    parser.add_argument("-f",
+                        dest="format",
+                        metavar="format",
+                        default="ttf",
+                        choices=["ttf", "woff", "woff2"],
+                        help="which format to output as")
 
     args = parser.parse_args()
 
