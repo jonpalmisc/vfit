@@ -45,8 +45,16 @@ version = "4.48.0"
 [package.extras]
 dev = ["py-make (>=0.1.0)", "twine", "argopt", "pydoc-markdown"]
 
+[[package]]
+category = "dev"
+description = "A formatter for Python code."
+name = "yapf"
+optional = false
+python-versions = "*"
+version = "0.30.0"
+
 [metadata]
-content-hash = "361e69a7682f523c61000eaec6258a8af9e6d8477c6e625c7ceb32082dc18b3a"
+content-hash = "382de88902c5c58c31928f3b6da9c15b7106c7c0d07281daa25cbfc9adce8d7f"
 lock-version = "1.0"
 python-versions = "^3.6"
 
@@ -106,4 +114,8 @@ pyyaml = [
 tqdm = [
     {file = "tqdm-4.48.0-py2.py3-none-any.whl", hash = "sha256:fcb7cb5b729b60a27f300b15c1ffd4744f080fb483b88f31dc8654b082cc8ea5"},
     {file = "tqdm-4.48.0.tar.gz", hash = "sha256:6baa75a88582b1db6d34ce4690da5501d2a1cb65c34664840a456b2c9f794d29"},
+]
+yapf = [
+    {file = "yapf-0.30.0-py2.py3-none-any.whl", hash = "sha256:3abf61ba67cf603069710d30acbc88cfe565d907e16ad81429ae90ce9651e0c9"},
+    {file = "yapf-0.30.0.tar.gz", hash = "sha256:3000abee4c28daebad55da6c85f3cd07b8062ce48e2e9943c8da1b9667d48427"},
 ]

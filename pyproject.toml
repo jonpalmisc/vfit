@@ -18,6 +18,7 @@ fonttools = "^4.13.0"
 brotli = "^1.0.7"
 
 [tool.poetry.dev-dependencies]
+yapf = "^0.30.0"
 
 [tool.poetry.scripts]
 vfit = "vfit.app:main"
