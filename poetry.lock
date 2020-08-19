@@ -12,7 +12,7 @@ description = "Tools to manipulate font files"
 name = "fonttools"
 optional = false
 python-versions = ">=3.6"
-version = "4.13.0"
+version = "4.14.0"
 
 [package.extras]
 all = ["fs (>=2.2.0,<3)", "lxml (>=4.0,<5)", "zopfli (>=0.1.4)", "lz4 (>=1.7.4.2)", "matplotlib", "sympy", "brotli (>=1.0.1)", "scipy", "brotlipy (>=0.7.0)", "munkres", "unicodedata2 (>=13.0.0)", "xattr"]
@@ -95,8 +95,8 @@ brotli = [
     {file = "Brotli-1.0.7.zip", hash = "sha256:0538dc1744fd17c314d2adc409ea7d1b779783b89fd95bcfb0c2acc93a6ea5a7"},
 ]
 fonttools = [
-    {file = "fonttools-4.13.0-py3-none-any.whl", hash = "sha256:c9fc9b1c803260e19362332d47ae2a8d701d4c085b1705bed39ac61a3f2dcb44"},
-    {file = "fonttools-4.13.0.zip", hash = "sha256:63987cd374c39a75146748f8be8637634221e53fef15cdf76f17777676d8545a"},
+    {file = "fonttools-4.14.0-py3-none-any.whl", hash = "sha256:78a061adbc58ea2e7a6428866aca5f47e119920848fda3cc195e6e843263d390"},
+    {file = "fonttools-4.14.0.zip", hash = "sha256:65744b52eee9da4e6ece77e0f8be1f79ab75f30d0b161ce667e9e2e2ed00b0d1"},
 ]
 pyyaml = [
     {file = "PyYAML-5.3.1-cp27-cp27m-win32.whl", hash = "sha256:74809a57b329d6cc0fdccee6318f44b9b8649961fa73144a98735b0aaf029f1f"},
