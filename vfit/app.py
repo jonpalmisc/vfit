@@ -29,8 +29,8 @@ def main():
 
     parser.add_argument("-f",
                         dest="format",
-                        default="ttf",
-                        choices=["ttf", "woff", "woff2"],
+                        default=None,
+                        choices=["woff", "woff2"],
                         help="which format to output as")
 
     args = parser.parse_args()
