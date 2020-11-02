@@ -1,3 +1,8 @@
+PLAT_WINDOWS = 3
+ENC_UNICODE_11 = 1
+LANG_ENGLISH = 1033
+
+
 # Removes spaces from a string.
 def sanitize(string):
     return string.replace(" ", "")
@@ -61,4 +66,5 @@ def updateMetadata(font, metadata, style):
     records = mapRecords(metadata, style)
     for id in records:
         if records[id] is not None:
-            nameTable.setName(records[id], id, 1, 0, 0)
+            nameTable.setName(records[id], id, PLAT_WINDOWS, ENC_UNICODE_11,
+                              LANG_ENGLISH)
