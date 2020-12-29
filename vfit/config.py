@@ -1,7 +1,5 @@
 import json
 
-from .util import getUniqueStyleID
-
 
 # Loads and validates the config from the given path.
 def load(path):
@@ -11,6 +9,7 @@ def load(path):
     with open(path, "r") as cfg_file:
         config = json.load(cfg_file)
 
+    # Regular subfamily should be the default if subfamily is not specified.
     for style in config:
         if style.get("subfamily") is None:
             style["subfamily"] = "Regular"
