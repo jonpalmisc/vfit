@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vfit"
-version = "0.5.1"
+version = "1.0.1"
 description = "Generate backwards-compatible, static instances of variable fonts"
 authors = ["Jon Palmisciano <jp@jonpalmisc.com>"]
 maintainers = ["Jon Palmisciano <jp@jonpalmisc.com>"]
