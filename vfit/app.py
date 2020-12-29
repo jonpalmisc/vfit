@@ -4,10 +4,26 @@
 # Copyright (c) 2020 Jon Palmisciano
 
 import argparse
+import json
 import sys
 
-from . import config
 from . import core
+
+
+# Loads and validates the config from the given path.
+def loadConfig(path):
+    config = {}
+
+    # Attempt to read and parse the config file.
+    with open(path, "r") as cfg_file:
+        config = json.load(cfg_file)
+
+    # Regular subfamily should be the default if subfamily is not specified.
+    for style in config:
+        if style.get("subfamily") is None:
+            style["subfamily"] = "Regular"
+
+    return config
 
 
 def main():
@@ -41,9 +57,9 @@ def main():
     args = parser.parse_args()
 
     try:
-        cfg = config.load(args.config)
+        cfg = loadConfig(args.config)
     except ValueError as error:
-        print(f"error: failed to load configuration ({error})")
+        print(f"error: failed to load config, check your JSON\n{error}")
         sys.exit(1)
 
     core.generateInstances(cfg, args)
