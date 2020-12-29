@@ -1,5 +1,9 @@
+PLAT_MAC = 1
 PLAT_WINDOWS = 3
+
+ENC_ROMAN = 0
 ENC_UNICODE_11 = 1
+
 LANG_ENGLISH = 1033
 
 MACSTYLE = {'Regular': 0, 'Bold': 1, 'Italic': 2, 'Bold Italic': 3}
@@ -44,19 +48,32 @@ def updateMetadata(font, style):
 
     fullName = getFullName(style)
 
+    nameTable.setName(family, 1, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(family, 1, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+
+    nameTable.setName(subfamily, 2, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(subfamily, 2, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+
+    nameTable.setName(fullName, 3, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(fullName, 3, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+
+    nameTable.setName(fullName, 4, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(fullName, 4, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
-    nameTable.setName("Version Placeholder", 5, PLAT_WINDOWS, ENC_UNICODE_11,
+
+    nameTable.setName("Version 1.000", 5, PLAT_MAC, ENC_ROMAN, 0)
+    nameTable.setName("Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11,
                       LANG_ENGLISH)
+
+    nameTable.setName(fullName, 6, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(fullName, 6, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
 
     if prefFamily is not None:
+        nameTable.setName(prefFamily, 16, PLAT_MAC, ENC_ROMAN, 0)
         nameTable.setName(prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11,
                           LANG_ENGLISH)
 
     if prefSubfamily is not None:
+        nameTable.setName(prefSubfamily, 17, PLAT_MAC, ENC_ROMAN, 0)
         nameTable.setName(prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11,
                           LANG_ENGLISH)
 
