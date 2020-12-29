@@ -24,29 +24,17 @@ $ poetry build && cd dist
 $ pip install vfit-version-py3-none-any.whl
 ```
 
+**VFIT depends on FontForge's Python package which you must install yourself!**
+On Ubuntu, it can be installed as follows:
+
+```sh
+$ sudo apt install python3-fontforge
+```
+
 ## Usage
 
 To begin, you will need a variable font file to work with. Your first step will
-be creating a configuration file. You can find a minimal example below. For an
-example will all available metadata options, see `sample-full.yaml`.
-
-``` yaml
-metadata:
-  family: Canary
-  version: 1.0.1
-
-styles:
-  - name: Regular
-    axes:
-      wght: 400.0
-      wdth: 100.0
-  
-  - name: Regular
-    subfamily: Wide
-    axes:
-      wght: 400.0
-      wdth: 150.0
-```
+be creating a configuration file. See `sample.json` for an example.
 
 Next, run VFIT and pass your configuration and variable font file as arguments:
 
@@ -55,7 +43,7 @@ $ vfit config.yaml Input-VF.ttf
 ```
 
 If you would like to generate instances into a specific directory, you can use
-the `-o` option. For more information, see `./vift.py --help`.
+the `-o` option. For more options, see `./vift.py --help`.
 
 ## Contributing
 
@@ -66,5 +54,5 @@ feature, feel free to create a new issue (or even better, a pull request).
 
 Copyright &copy; 2020 Jon Palmisciano
 
-VFIT is available under the MIT License. See [LICENSE.txt](LICENSE.txt) for more
-information.
+VFIT is available under the MIT License. See [LICENSE.txt](LICENSE.txt) for
+more information.
