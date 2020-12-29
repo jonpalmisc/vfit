@@ -32,7 +32,7 @@ def getFullName(style):
     if subfamilyName == None:
         subfamilyName = style.get("subfamily")
 
-    return f"{familyName}-{subfamilyName}"
+    return f"{familyName} {subfamilyName}"
 
 
 # Rewrites the name table with new metadata.
@@ -47,6 +47,7 @@ def updateMetadata(font, style):
     prefSubfamily = style.get("prefSubfamily")
 
     fullName = getFullName(style)
+    fullNameHyphenated = fullName.replace(" ", "-")
 
     nameTable.setName(family, 1, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(family, 1, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
@@ -64,22 +65,23 @@ def updateMetadata(font, style):
     nameTable.setName("Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11,
                       LANG_ENGLISH)
 
-    nameTable.setName(fullName, 6, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName(fullName, 6, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+    nameTable.setName(fullNameHyphenated, 6, PLAT_MAC, ENC_ROMAN, 0)
+    nameTable.setName(fullNameHyphenated, 6, PLAT_WINDOWS, ENC_UNICODE_11,
+                      LANG_ENGLISH)
 
     if prefFamily is not None:
-        nameTable.setName(prefFamily, 16, PLAT_MAC, ENC_ROMAN, 0)
         nameTable.setName(prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11,
                           LANG_ENGLISH)
 
     if prefSubfamily is not None:
-        nameTable.setName(prefSubfamily, 17, PLAT_MAC, ENC_ROMAN, 0)
         nameTable.setName(prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11,
                           LANG_ENGLISH)
 
 
 def makeSelection(bits, style):
     bits = bits ^ bits
+
+    bits |= 0b10000000
 
     if style == 'Regular':
         bits |= 0b1000000
