@@ -1,0 +1,39 @@
+[
+  {
+    "family": "Placeholder",
+    "axes": {
+      "wght": 400.0,
+      "wdth": 100.0,
+      "CNTR": 0.0
+    }
+  },
+  {
+    "family": "Placeholder Medium",
+    "axes": {
+      "wght": 500.0,
+      "wdth": 100.0,
+      "CNTR": 0.0
+    },
+    "prefFamily": "Placeholder",
+    "prefSubfamily": "Medium"
+  },
+  {
+    "family": "Placeholder Semibold",
+    "axes": {
+      "wght": 600.0,
+      "wdth": 100.0,
+      "CNTR": 0.0
+    },
+    "prefFamily": "Placeholder",
+    "prefSubfamily": "Semibold"
+  },
+  {
+    "family": "Placeholder",
+    "subfamily": "Bold",
+    "axes": {
+      "wght": 700.0,
+      "wdth": 100.0,
+      "CNTR": 0.0
+    }
+  }
+]
