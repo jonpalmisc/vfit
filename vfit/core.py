@@ -4,36 +4,36 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont as instantiateFont
 from tqdm import tqdm
 
-from .util import updateMetadata, sanitize
+from .util import updateMetadata, makeSelection, sanitize
 
 
 # Generates and writes each defined instance.
 def generateInstances(config, args):
-    metadata = config["metadata"]
-    familyName = sanitize(metadata["family"])
-
-    outputDir = os.path.join(args.outputPath, familyName)
 
     # Create the output path if it doesn't exist.
-    if not os.path.exists(outputDir):
-        os.makedirs(outputDir)
+    if not os.path.exists(args.outputPath):
+        os.makedirs(args.outputPath)
 
-    for style in tqdm(config["styles"], ascii=True, leave=False):
+    for style in tqdm(config, ascii=True, leave=False):
         font = TTFont(args.source)
 
         instantiateFont(font, style["axes"], inplace=True, overlap=True)
-        updateMetadata(font, metadata, style)
+        updateMetadata(font, style)
 
-        styleName = sanitize(style["name"])
-        subfamilyName = style.get("subfamily") if "subfamily" in style else ""
+        familyName = style.get("prefFamily")
+        if familyName == None:
+            familyName = style.get("family")
 
-        # Override style weight if requested.
-        if "weight" in style:
-            font["OS/2"].usWeightClass = style.get("weight")
+        subfamilyName = style.get("prefSubfamily")
+        if subfamilyName == None:
+            subfamilyName = style.get("subfamily")
+
+        font["OS/2"].fsSelection = makeSelection(font["OS/2"].fsSelection,
+                                                 subfamilyName)
 
         ext = args.format if args.format is not None else "ttf"
-        filename = f"{familyName}{sanitize(subfamilyName)}-{styleName}.{ext}"
-        outputPath = os.path.join(outputDir, filename)
+        filename = f"{familyName}-{subfamilyName}.{ext}"
+        outputPath = os.path.join(args.outputPath, filename)
 
         font.flavor = args.format
         font.save(outputPath)

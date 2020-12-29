@@ -17,54 +17,67 @@ def getUniqueStyleID(style):
     return sanitize(id)
 
 
-# Processes and maps family/style metadata to name table records.
-# https://docs.microsoft.com/en-us/typography/opentype/spec/name#name-ids
-def mapRecords(metadata, style):
-    records = {}
+def getFullName(style):
+    familyName = style.get("prefFamily")
+    if familyName == None:
+        familyName = style.get("family")
 
-    familyName = metadata["family"]
-    styleName = style["name"]
+    subfamilyName = style.get("prefSubfamily")
+    if subfamilyName == None:
+        subfamilyName = style.get("subfamily")
 
-    # Handle subfamilies properly.
-    if "subfamily" in style:
-        subfamilyName = style["subfamily"]
-        familyName += " " + subfamilyName
-
-        # Set the preferred subfamily.
-        records[17] = subfamilyName + " " + styleName
-
-    fullName = familyName + " " + styleName
-
-    records[0] = metadata.get("copyright")
-    records[1] = familyName
-    records[2] = styleName
-    records[3] = fullName.replace(" ", "-")
-    records[4] = fullName
-    records[5] = metadata.get("version")
-    records[6] = fullName.replace(" ", "-")
-    records[7] = metadata.get("trademark")
-    records[8] = metadata.get("manufacturer")
-    records[9] = metadata.get("designer")
-    records[10] = metadata.get("description")
-    records[11] = metadata.get("vendor_url")
-    records[12] = metadata.get("designer_url")
-    records[13] = metadata.get("license")
-    records[14] = metadata.get("license_url")
-    records[16] = metadata.get("family")
-
-    return records
+    return f"{familyName}-{subfamilyName}"
 
 
 # Rewrites the name table with new metadata.
-def updateMetadata(font, metadata, style):
+def updateMetadata(font, style):
     nameTable = font["name"]
 
-    # Clear existing table values.
     nameTable.names = []
 
-    # Add each defined record to the table.
-    records = mapRecords(metadata, style)
-    for id in records:
-        if records[id] is not None:
-            nameTable.setName(records[id], id, PLAT_WINDOWS, ENC_UNICODE_11,
-                              LANG_ENGLISH)
+    family = style.get("family")
+    subfamily = style.get("subfamily")
+    prefFamily = style.get("prefFamily")
+    prefSubfamily = style.get("prefSubfamily")
+
+    fullName = getFullName(style)
+
+    nameTable.setName(family, 1, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+    nameTable.setName(subfamily, 2, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+    nameTable.setName(fullName, 3, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+    nameTable.setName(fullName, 4, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+    nameTable.setName("Version Placeholder", 5, PLAT_WINDOWS, ENC_UNICODE_11,
+                      LANG_ENGLISH)
+    nameTable.setName(fullName, 6, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
+
+    if prefFamily is not None:
+        nameTable.setName(prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11,
+                          LANG_ENGLISH)
+
+    if prefSubfamily is not None:
+        nameTable.setName(prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11,
+                          LANG_ENGLISH)
+
+
+def makeSelection(bits, style):
+    bits = bits ^ bits
+
+    if style == 'Regular':
+        bits |= 0b1000000
+    else:
+        bits &= ~0b1000000
+
+    if style == 'Bold' or style == 'BoldItalic':
+        bits |= 0b100000
+    else:
+        bits &= ~0b100000
+
+    if style == 'Italic':
+        bits |= 0b1
+    else:
+        bits &= ~0b1
+
+    if not bits:
+        bits = 0b1000000
+
+    return bits
