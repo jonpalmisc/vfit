@@ -4,7 +4,7 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont as instantiateFont
 from tqdm import tqdm
 
-from .util import updateMetadata, makeSelection, sanitize
+from .util import updateMetadata, makeSelection, getMacStyle, sanitize
 
 
 # Generates and writes each defined instance.
@@ -24,15 +24,19 @@ def generateInstances(config, args):
         if familyName == None:
             familyName = style.get("family")
 
-        subfamilyName = style.get("prefSubfamily")
-        if subfamilyName == None:
-            subfamilyName = style.get("subfamily")
+        prefSubfamily = style.get("prefSubfamily")
+        if prefSubfamily == None:
+            prefSubfamily = style.get("subfamily")
+
+        subfamilyName = style.get("subfamily")
 
         font["OS/2"].fsSelection = makeSelection(font["OS/2"].fsSelection,
                                                  subfamilyName)
 
+        font["head"].macStyle = getMacStyle(subfamilyName)
+
         ext = args.format if args.format is not None else "ttf"
-        filename = f"{familyName}-{subfamilyName}.{ext}"
+        filename = f"{familyName}-{prefSubfamily}.{ext}"
         outputPath = os.path.join(args.outputPath, filename)
 
         font.flavor = args.format

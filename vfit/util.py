@@ -2,6 +2,8 @@ PLAT_WINDOWS = 3
 ENC_UNICODE_11 = 1
 LANG_ENGLISH = 1033
 
+MACSTYLE = {'Regular': 0, 'Bold': 1, 'Italic': 2, 'Bold Italic': 3}
+
 
 # Removes spaces from a string.
 def sanitize(string):
@@ -81,3 +83,7 @@ def makeSelection(bits, style):
         bits = 0b1000000
 
     return bits
+
+
+def getMacStyle(style):
+    return MACSTYLE[style]
