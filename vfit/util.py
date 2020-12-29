@@ -36,7 +36,7 @@ def getFullName(style):
 
 
 # Rewrites the name table with new metadata.
-def updateMetadata(font, style):
+def updateNames(font, style):
     nameTable = font["name"]
 
     nameTable.names = []
