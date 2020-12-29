@@ -32,6 +32,8 @@ def generateInstances(config, args):
         if prefSubfamily == None:
             prefSubfamily = style.get("subfamily")
 
+        prefSubfamily = prefSubfamily.replace(" ", "")
+
         subfamilyName = style.get("subfamily")
 
         # Perform additional table fixups.
