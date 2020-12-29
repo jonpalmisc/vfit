@@ -39,6 +39,14 @@ def generateInstances(config, args):
         font["OS/2"].fsSelection = makeSelection(font["OS/2"].fsSelection,
                                                  subfamilyName)
 
+        weightOverride = style.get("weightOverride")
+        if weightOverride != None:
+            font["OS/2"].usWeightClass = weightOverride
+
+        widthOverride = style.get("widthOverride")
+        if widthOverride != None:
+            font["OS/2"].usWidthClass = widthOverride
+
         ext = args.format if args.format is not None else "ttf"
         filename = f"{familyName}-{prefSubfamily}.{ext}"
         outputPath = os.path.join(args.outputPath, filename)
