@@ -33,6 +33,11 @@ def main():
                         choices=["woff", "woff2"],
                         help="which format to output as")
 
+    parser.add_argument("-b",
+                        dest="bless",
+                        action="store_true",
+                        help="bless the output with FontForge")
+
     args = parser.parse_args()
 
     try:

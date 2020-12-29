@@ -34,24 +34,26 @@ def generateInstances(config, args):
 
         subfamilyName = style.get("subfamily")
 
+        # Perform additional table fixups.
+        font["head"].macStyle = getMacStyle(subfamilyName)
         font["OS/2"].fsSelection = makeSelection(font["OS/2"].fsSelection,
                                                  subfamilyName)
 
-        font["head"].macStyle = getMacStyle(subfamilyName)
-
         ext = args.format if args.format is not None else "ttf"
-        filename = f"{familyName}-{prefSubfamily}.{ext}.tmp"
+        filename = f"{familyName}-{prefSubfamily}.{ext}"
         outputPath = os.path.join(args.outputPath, filename)
+
+        if args.bless:
+            outputPath += ".tmp"
+            tempPaths.append(outputPath)
 
         font.flavor = args.format
         font.save(outputPath)
 
-        tempPaths.append(outputPath)
+    # Bless the font files with FontForge if requested.
+    if args.bless:
+        for path in tempPaths:
+            f = fontforge.open(path)
+            f.generate(path.replace(".tmp", ""))
 
-    # Something about this makes the fonts work properly on Windows. I tried to
-    # figure this out for days. Font formats are cursed technology.
-    for path in tempPaths:
-        f = fontforge.open(path)
-        f.generate(path.replace(".tmp", ""))
-
-        os.unlink(path)
+            os.unlink(path)
