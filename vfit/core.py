@@ -4,7 +4,7 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont as instantiateFont
 from tqdm import tqdm
 
-from .util import updateNames, makeSelection, getMacStyle, sanitize, dropVariationTables
+from .util import updateNames, makeSelection, getPostscriptName, getMacStyle, sanitize, dropVariationTables
 
 
 # Generates and writes each defined instance.
@@ -50,7 +50,7 @@ def generateInstances(config, args):
         dropVariationTables(font)
 
         ext = args.format if args.format is not None else "ttf"
-        filename = f"{family}-{prefSubfamily}.{ext}"
+        filename = getPostscriptName(style) + f".{ext}"
         outputPath = os.path.join(args.outputPath, filename)
 
         font.flavor = args.format

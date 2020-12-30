@@ -35,6 +35,21 @@ def getFullName(style):
     return f"{familyName} {subfamilyName}"
 
 
+def getPostscriptName(style):
+    familyName = style.get("prefFamily")
+    if familyName == None:
+        familyName = style.get("family")
+
+    subfamilyName = style.get("prefSubfamily")
+    if subfamilyName == None:
+        subfamilyName = style.get("subfamily")
+
+    familyName = familyName.replace(" ", "")
+    subfamilyName = subfamilyName.replace(" ", "")
+
+    return f"{familyName}-{subfamilyName}"
+
+
 # Rewrites the name table with new metadata.
 def updateNames(font, style):
     nameTable = font["name"]
@@ -47,7 +62,7 @@ def updateNames(font, style):
     prefSubfamily = style.get("prefSubfamily")
 
     fullName = getFullName(style)
-    fullNameHyphenated = fullName.replace(" ", "-")
+    postscriptName = getPostscriptName(style)
 
     nameTable.setName(family, 1, PLAT_MAC, ENC_ROMAN, 0)
     nameTable.setName(family, 1, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
@@ -65,8 +80,8 @@ def updateNames(font, style):
     nameTable.setName("Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11,
                       LANG_ENGLISH)
 
-    nameTable.setName(fullNameHyphenated, 6, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName(fullNameHyphenated, 6, PLAT_WINDOWS, ENC_UNICODE_11,
+    nameTable.setName(postscriptName, 6, PLAT_MAC, ENC_ROMAN, 0)
+    nameTable.setName(postscriptName, 6, PLAT_WINDOWS, ENC_UNICODE_11,
                       LANG_ENGLISH)
 
     if prefFamily is not None:
@@ -80,8 +95,6 @@ def updateNames(font, style):
 
 def makeSelection(bits, style):
     bits = bits ^ bits
-
-    bits |= 0b00000000
 
     if style == 'Regular':
         bits |= 0b1000000
