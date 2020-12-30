@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="vfit-logo.png" width="320">
+  <img src="vfit-logo.png">
 </div>
 
 ## About
