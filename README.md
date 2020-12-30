@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="vfit-logo.png" width="300">
+  <img src="vfit-logo.png" width="320">
 </div>
 
 ## About
@@ -47,6 +47,10 @@ feature, feel free to create a new issue (or even better, a pull request).
 
 Special thanks to [Viktor Rubenko](https://github.com/ViktorRubenko) for
 helping me get exported fonts to work on Windows!
+
+The VFIT logo uses [NewGlyph](https://beta.newglyph.com/)'s
+[Armada](https://beta.newglyph.com/discovery-collection/#font-armada) variable
+font.
 
 ## License
 
