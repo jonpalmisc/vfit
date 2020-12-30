@@ -24,13 +24,6 @@ $ poetry build && cd dist
 $ pip install vfit-version-py3-none-any.whl
 ```
 
-**VFIT depends on FontForge's Python package which you must install yourself!**
-On Ubuntu, it can be installed as follows:
-
-```sh
-$ sudo apt install python3-fontforge
-```
-
 ## Usage
 
 To begin, you will need a variable font file to work with. Your first step will
@@ -49,6 +42,11 @@ the `-o` option. For more options, see `./vift.py --help`.
 
 All contributions are welcome. If you find a bug or have a request for a
 feature, feel free to create a new issue (or even better, a pull request).
+
+## Credits
+
+Special thanks to [Viktor Rubenko](https://github.com/ViktorRubenko) for
+helping me get exported fonts to work on Windows!
 
 ## License
 
