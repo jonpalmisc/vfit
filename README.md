@@ -1,19 +1,23 @@
 <div align="center">
-  <img src="vfit-logo.png">
+  <img src="https://raw.githubusercontent.com/jonpalmisc/vfit/master/vfit-logo.png">
 </div>
 
 ## About
 
-VFIT (Variable Font Instancing Tool) allows you to generate customized,
-backwards-compatible, static instances of a variable font from a configuration
-file. Additionally, VFIT can manipulate font metadata such as the family name,
-version, or copyright information.
+VFIT (Variable Font Instancing Tool) allows you to generate custom, static
+instances of a variable font defined in a configuration file.
 
 ## Installation
 
-VFIT is not currently available on the Python Package Index. You can install
-VFIT by downloading a pre-built wheel from the Releases section or by building
-one yourself.
+VFIT is now available on the Python Package Index. You can install VFIT with
+the following command:
+
+```sh
+pip3 install vfit
+```
+
+Alternatively, you can install VFIT by downloading a pre-built wheel from the
+Releases section or by building it yourself.
 
 ``` sh
 # Skip this step if you're downloading a prebuilt wheel.
@@ -36,7 +40,7 @@ $ vfit config.yaml Input-VF.ttf
 ```
 
 If you would like to generate instances into a specific directory, you can use
-the `-o` option. For more options, see `./vift.py --help`.
+the `-o` option. For more options, see `vift --help`.
 
 ## Contributing
 
