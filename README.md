@@ -13,7 +13,7 @@ VFIT is now available on the Python Package Index. You can install VFIT with
 the following command:
 
 ```sh
-pip3 install vfit
+$ pip3 install vfit
 ```
 
 Alternatively, you can install VFIT by downloading a pre-built wheel from the
@@ -36,7 +36,7 @@ be creating a configuration file. See `sample.json` for an example.
 Next, run VFIT and pass your configuration and variable font file as arguments:
 
 ``` sh
-$ vfit config.yaml Input-VF.ttf
+$ vfit config.json variable.ttf
 ```
 
 If you would like to generate instances into a specific directory, you can use
