@@ -108,7 +108,7 @@ def getMacStyle(style):
     return MACSTYLE[style]
 
 
-def drop_var_tables(font):
+def dropVariationTables(font):
     for tag in 'STAT cvar fvar gvar'.split():
         if tag in font.keys():
             del font[tag]
