@@ -8,6 +8,9 @@ LANG_ENGLISH = 1033
 
 MACSTYLE = {'Regular': 0, 'Bold': 1, 'Italic': 2, 'Bold Italic': 3}
 
+OVERLAP_SIMPLE = 0x40
+OVERLAP_COMPOUND = 0x0400
+
 
 # Removes spaces from a string.
 def sanitize(string):
@@ -77,20 +80,24 @@ def updateNames(font, style):
     nameTable.setName(fullName, 4, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
 
     nameTable.setName("Version 1.000", 5, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName("Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11,
-                      LANG_ENGLISH)
+    nameTable.setName(
+        "Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
+    )
 
     nameTable.setName(postscriptName, 6, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName(postscriptName, 6, PLAT_WINDOWS, ENC_UNICODE_11,
-                      LANG_ENGLISH)
+    nameTable.setName(
+        postscriptName, 6, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
+    )
 
     if prefFamily is not None:
-        nameTable.setName(prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11,
-                          LANG_ENGLISH)
+        nameTable.setName(
+            prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
+        )
 
     if prefSubfamily is not None:
-        nameTable.setName(prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11,
-                          LANG_ENGLISH)
+        nameTable.setName(
+            prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
+        )
 
 
 def makeSelection(bits, style):
@@ -125,3 +132,14 @@ def dropVariationTables(font):
     for tag in 'STAT cvar fvar gvar'.split():
         if tag in font.keys():
             del font[tag]
+
+
+def setOverlapFlags(font):
+    glyf = font["glyf"]
+    for glyph_name in glyf.keys():
+        glyph = glyf[glyph_name]
+
+        if glyph.isComposite():
+            glyph.components[0].flags |= OVERLAP_COMPOUND
+        elif glyph.numberOfContours > 0:
+            glyph.flags[0] |= OVERLAP_SIMPLE
