@@ -81,7 +81,7 @@ def updateNames(font, style):
 def makeSelection(bits, style):
     bits = bits ^ bits
 
-    bits |= 0b10000000
+    bits |= 0b00000000
 
     if style == 'Regular':
         bits |= 0b1000000
@@ -106,3 +106,9 @@ def makeSelection(bits, style):
 
 def getMacStyle(style):
     return MACSTYLE[style]
+
+
+def dropVariationTables(font):
+    for tag in 'STAT cvar fvar gvar'.split():
+        if tag in font.keys():
+            del font[tag]
