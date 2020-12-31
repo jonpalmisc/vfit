@@ -49,8 +49,9 @@ feature, feel free to create a new issue (or even better, a pull request).
 
 ## Credits
 
-Special thanks to [Viktor Rubenko](https://github.com/ViktorRubenko) for
-helping me get exported fonts to work on Windows!
+Special thanks to [Viktor Rubenko](https://github.com/ViktorRubenko), who knows
+way more about font technology than I do and has been incredibly helpful in
+fixing strange bugs.
 
 The VFIT logo uses [NewGlyph](https://beta.newglyph.com/)'s
 [Armada](https://beta.newglyph.com/discovery-collection/#font-armada) variable
