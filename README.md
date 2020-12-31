@@ -47,6 +47,11 @@ the `-o` option. For more options, see `vift --help`.
 All contributions are welcome. If you find a bug or have a request for a
 feature, feel free to create a new issue (or even better, a pull request).
 
+If you are submitting a pull request, please format your code with `yapf` using
+the default settings. Additionally, I am aware that camelCase naming is against
+the convention for Python, but it is the convention used by `fonttools`, so I
+have chosen to use it here as well for consistency.
+
 ## Credits
 
 Special thanks to [Viktor Rubenko](https://github.com/ViktorRubenko), who knows
