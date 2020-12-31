@@ -80,24 +80,20 @@ def updateNames(font, style):
     nameTable.setName(fullName, 4, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH)
 
     nameTable.setName("Version 1.000", 5, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName(
-        "Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
-    )
+    nameTable.setName("Version 1.000", 5, PLAT_WINDOWS, ENC_UNICODE_11,
+                      LANG_ENGLISH)
 
     nameTable.setName(postscriptName, 6, PLAT_MAC, ENC_ROMAN, 0)
-    nameTable.setName(
-        postscriptName, 6, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
-    )
+    nameTable.setName(postscriptName, 6, PLAT_WINDOWS, ENC_UNICODE_11,
+                      LANG_ENGLISH)
 
     if prefFamily is not None:
-        nameTable.setName(
-            prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
-        )
+        nameTable.setName(prefFamily, 16, PLAT_WINDOWS, ENC_UNICODE_11,
+                          LANG_ENGLISH)
 
     if prefSubfamily is not None:
-        nameTable.setName(
-            prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11, LANG_ENGLISH
-        )
+        nameTable.setName(prefSubfamily, 17, PLAT_WINDOWS, ENC_UNICODE_11,
+                          LANG_ENGLISH)
 
 
 def makeSelection(bits, style):
