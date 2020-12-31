@@ -50,7 +50,8 @@ def generateInstances(config, args):
         dropVariationTables(font)
 
         # Fix contour overlap issues on macOS.
-        setOverlapFlags(font)
+        if args.fixContour == True:
+            setOverlapFlags(font)
 
         ext = args.format if args.format is not None else "ttf"
         filename = getPostscriptName(style) + f".{ext}"
