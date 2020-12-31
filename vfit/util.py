@@ -8,6 +8,9 @@ LANG_ENGLISH = 1033
 
 MACSTYLE = {'Regular': 0, 'Bold': 1, 'Italic': 2, 'Bold Italic': 3}
 
+OVERLAP_SIMPLE = 0x40
+OVERLAP_COMPOUND = 0x0400
+
 
 # Removes spaces from a string.
 def sanitize(string):
@@ -125,3 +128,14 @@ def dropVariationTables(font):
     for tag in 'STAT cvar fvar gvar'.split():
         if tag in font.keys():
             del font[tag]
+
+
+def setOverlapFlags(font):
+    glyf = font["glyf"]
+    for glyph_name in glyf.keys():
+        glyph = glyf[glyph_name]
+
+        if glyph.isComposite():
+            glyph.components[0].flags |= OVERLAP_COMPOUND
+        elif glyph.numberOfContours > 0:
+            glyph.flags[0] |= OVERLAP_SIMPLE

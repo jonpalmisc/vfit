@@ -49,6 +49,11 @@ def main():
                         choices=["woff", "woff2"],
                         help="which format to output as")
 
+    parser.add_argument("-C",
+                        dest="fixContour",
+                        action="store_true",
+                        help="fix contours for macOS (side effects unknown)")
+
     args = parser.parse_args()
 
     try:

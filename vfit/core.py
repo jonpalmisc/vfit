@@ -4,7 +4,7 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont as instantiateFont
 from tqdm import tqdm
 
-from .util import updateNames, makeSelection, getPostscriptName, getMacStyle, sanitize, dropVariationTables
+from .util import updateNames, makeSelection, getPostscriptName, getMacStyle, sanitize, dropVariationTables, setOverlapFlags
 
 
 # Generates and writes each defined instance.
@@ -48,6 +48,10 @@ def generateInstances(config, args):
             font["OS/2"].usWidthClass = widthOverride
 
         dropVariationTables(font)
+
+        # Fix contour overlap issues on macOS.
+        if args.fixContour == True:
+            setOverlapFlags(font)
 
         ext = args.format if args.format is not None else "ttf"
         filename = getPostscriptName(style) + f".{ext}"
