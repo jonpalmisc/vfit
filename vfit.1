@@ -1,0 +1,31 @@
+.TH vfit "1" "December 2021" "User Commands"
+.SH NAME
+vfit \- generate backwards-compatible, static instances of variable fonts
+.SH SYNOPSIS
+vfit [\-h] [\-o PATH] [\-f {woff,woff2}] [\-C] config source
+.SH DESCRIPTION
+This (Variable Font Instancing Tool) allows you to generate custom, static
+instances of a variable font defined in a configuration file.
+.SH OPTIONS
+.PP
+Generate backwards\-compatible, static instances of variable fonts.
+.SS "positional arguments:"
+.TP
+config
+the metadata/style definition file
+.TP
+source
+the font to generate instances of
+.SS "optional arguments:"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-o\fR PATH
+where to place output files
+.TP
+\fB\-f\fR {woff,woff2}
+which format to output as
+.TP
+\fB\-C\fR
+fix contours for macOS (side effects unknown)
