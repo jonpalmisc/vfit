@@ -40,7 +40,7 @@ $ vfit config.json variable.ttf
 ```
 
 If you would like to generate instances into a specific directory, you can use
-the `-o` option. For more options, see `vift --help`.
+the `-o` option. For more options, see `vfit --help`.
 
 ## Contributing
 
